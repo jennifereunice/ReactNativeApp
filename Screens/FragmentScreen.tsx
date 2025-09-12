@@ -1,10 +1,27 @@
-
-// Screens/FragmentScreen.tsx
 import React, { useState } from "react";
-import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+} from "react-native";
+
+// Enable LayoutAnimation on Android
+if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 export function FragmentScreen() {
   const [currentFragment, setCurrentFragment] = useState(1);
+
+  const switchFragment = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setCurrentFragment(currentFragment === 1 ? 2 : 1);
+  };
 
   const renderFragment = () => {
     if (currentFragment === 1) {
@@ -12,11 +29,17 @@ export function FragmentScreen() {
         <View style={styles.fragmentBox}>
           <Text style={styles.fragmentTitle}> Fragment - 1</Text>
 
-          <TouchableOpacity style={styles.button} onPress={() => console.log("Event 1 in Fragment 1")}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => console.log("Event 1 in Fragment 1")}
+          >
             <Text style={styles.buttonText}>Event 1</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={() => console.log("Event 2 in Fragment 1")}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => console.log("Event 2 in Fragment 1")}
+          >
             <Text style={styles.buttonText}>Event 2</Text>
           </TouchableOpacity>
         </View>
@@ -26,11 +49,17 @@ export function FragmentScreen() {
         <View style={styles.fragmentBox}>
           <Text style={styles.fragmentTitle}> Fragment - 2</Text>
 
-          <TouchableOpacity style={styles.button} onPress={() => console.log("Event 1 in Fragment 2")}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => console.log("Event 1 in Fragment 2")}
+          >
             <Text style={styles.buttonText}>Event 1</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={() => console.log("Event 2 in Fragment 2")}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => console.log("Event 2 in Fragment 2")}
+          >
             <Text style={styles.buttonText}>Event 2</Text>
           </TouchableOpacity>
         </View>
@@ -42,15 +71,15 @@ export function FragmentScreen() {
     <SafeAreaView style={styles.container}>
       {renderFragment()}
 
-    <View style={styles.footer} >
-      <TouchableOpacity
-        style={[styles.button, { marginTop: 30 }]}
-        onPress={() => setCurrentFragment(currentFragment === 1 ? 2 : 1)}
-      >
-        <Text style={styles.buttonText}>
-          {currentFragment === 1 ? "Next Fragment" : "Back"}
-        </Text>
-      </TouchableOpacity>
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={[styles.button, { marginTop: 30 }]}
+          onPress={switchFragment}
+        >
+          <Text style={styles.buttonText}>
+            {currentFragment === 1 ? "Next Fragment" : "Back"}
+          </Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -76,7 +105,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 15,
-    color: "#333",
+    color: "#fff",
   },
   button: {
     backgroundColor: "#3e7dc0ff",
@@ -92,8 +121,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
-  footer:{
-    marginTop:20,
+  footer: {
+    marginTop: 20,
     width: "100%",
     padding: 20,
     backgroundColor: "#46335fff",

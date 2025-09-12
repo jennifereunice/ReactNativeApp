@@ -1,5 +1,5 @@
 // Screens/HorizontalScrollViewScreen.tsx
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -9,8 +9,11 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from "react-native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 
 export function HorizontalScrollViews() {
+  const navigation = useNavigation();
+
   const items = [
     { id: "1", name: "Text-1" },
     { id: "2", name: "Text-2" },
@@ -24,12 +27,33 @@ export function HorizontalScrollViews() {
   const [contentWidth, setContentWidth] = useState(1);
   const [layoutWidth, setLayoutWidth] = useState(1);
 
+  // 🔹 Track navigation events
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log("📌 Screen focused: HorizontalScrollViews");
+      return () => {
+        console.log("📌 Screen blurred: HorizontalScrollViews");
+      };
+    }, [])
+  );
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("state", () => {
+      console.log("🔄 Navigation state changed on HorizontalScrollViews");
+    });
+    return unsubscribe;
+  }, [navigation]);
+
+  // 🔹 Handle scroll
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     setScrollX(event.nativeEvent.contentOffset.x);
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={styles.container}
+      testID="HorizontalScrollViewsScreen" // ✅ test id
+    >
       {/* Scrollable content */}
       <ScrollView
         horizontal
@@ -39,29 +63,39 @@ export function HorizontalScrollViews() {
         onContentSizeChange={(w) => setContentWidth(w)}
         onLayout={(e) => setLayoutWidth(e.nativeEvent.layout.width)}
         scrollEventThrottle={16}
+        testID="HorizontalScrollView" // ✅ test id
       >
         {items.map((item) => (
-          <View key={item.id} style={styles.card}>
+          <View key={item.id} style={styles.card} testID={`Card-${item.id}`}>
             <Text style={styles.name}>{item.name}</Text>
           </View>
         ))}
       </ScrollView>
 
       {/* Custom scrollbar */}
-      <View style={styles.scrollBarTrack}>
+      <View style={styles.scrollBarTrack} testID="CustomScrollBarTrack">
         <View
           style={[
             styles.scrollBarThumb,
-            {
-              width: (layoutWidth / contentWidth) * layoutWidth, // proportional thumb
-              transform: [
-                {
-                  translateX:
-                    (scrollX / contentWidth) * layoutWidth,
-                },
-              ],
-            },
+            (() => {
+              const thumbWidth = (layoutWidth / contentWidth) * layoutWidth;
+              const scrollableWidth = contentWidth - layoutWidth;
+              const thumbTranslateRange = layoutWidth - thumbWidth;
+
+              return {
+                width: thumbWidth,
+                transform: [
+                  {
+                    translateX:
+                      scrollableWidth > 0
+                        ? (scrollX / scrollableWidth) * thumbTranslateRange
+                        : 0,
+                  },
+                ],
+              };
+            })(),
           ]}
+          testID="CustomScrollBarThumb"
         />
       </View>
     </SafeAreaView>
@@ -103,7 +137,7 @@ const styles = StyleSheet.create({
   },
   scrollBarThumb: {
     height: 6,
-    backgroundColor: "#ff4444", // 👈 visible color for scrollbar
+    backgroundColor: "#ff4444",
     borderRadius: 3,
   },
 });

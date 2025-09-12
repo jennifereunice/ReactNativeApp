@@ -46,6 +46,9 @@ import {ChangeScreen} from "./Screens/ChangeScreen";
 
 import { SetFontActivity } from "./Screens/SetFontActivity";
 
+
+import { SetAttributes} from "./Screens/SetAttributes";
+
 import {FragmentScreen} from "./Screens/FragmentScreen";
 import { HorizontalScrollViews } from "./Screens/HorizontalScrollViews";
 
@@ -85,10 +88,7 @@ function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Hello Jennifer!</Text>
-      <Text style={styles.subtitle}>
-        If you see this update, Fast Refresh is working 
-      </Text>
+      
 
       <TouchableOpacity
   style={[styles.button, { backgroundColor: "#634ba7ff" }]}
@@ -159,6 +159,12 @@ function HomeScreen() {
       >
         <Text style={styles.buttonText}>Set Font Activity</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+         style={[styles.button, { backgroundColor: "#634ba7ff" }]}
+        onPress={() => navigation.navigate("Set Attributes")}
+      >
+        <Text style={styles.buttonText}>Set Attributes</Text>
+      </TouchableOpacity>
 
       
       
@@ -167,13 +173,7 @@ function HomeScreen() {
     </SafeAreaView>
   );
 }
-// export function ActionScreen() {
-//   return (
-//     <SafeAreaView style={styles.container}>
-//       <Text style={styles.title}>⚡ Actions Screen</Text>
-//     </SafeAreaView>
-//   );
-// }
+
 
 
 
@@ -231,6 +231,7 @@ function App() {
         <Stack.Screen name="main-activity-event" component={MainActivityEventScreen} />  
         <Stack.Screen name="Pop Up Activity" component={PopUpScreen} />  
         <Stack.Screen name="Set Font Activity" component={SetFontActivity} /> 
+        <Stack.Screen name="Set Attributes" component={SetAttributes} /> 
         <Stack.Screen name="Agora Activity" component={AgoraActivityScreen} />  
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,4 +1,4 @@
-
+// Screens/ListView.tsx
 import React, { useState } from "react";
 import {
   SafeAreaView,
@@ -15,21 +15,52 @@ export function ListView() {
   const [modalVisible, setModalVisible] = useState(true);
 
   const data = [
-    { id: "1", name: "Jennifer", image: "https://images.pexels.com/photos/50577/hedgehog-animal-baby-cute-50577.jpeg?cs=srgb&dl=pexels-pixabay-50577.jpg&fm=jpg" },
-    { id: "2", name: "Michael", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmXhtdddYGmdbTHZ4YsmOp8lw2pS46M51sDw&s" },
-    { id: "3", name: "Sophia", image: "https://images.wsj.net/im-140539/?width=1280&size=1" },
-    { id: "4", name: "David", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbVF3ccfihAW5yOWlkN0Q7SVEtwsUhJ88Gix2W3xzBTya5YPDfwqHI1K_OsPPsHG5wWY&usqp=CAU" },
-    { id: "5", name: "Emma", image: "https://i.pinimg.com/236x/3e/7c/6f/3e7c6feab1a29f9f0cdeec00baef0a85.jpg" },
+    {
+      id: "1",
+      name: "Jennifer",
+      image:
+        "https://images.pexels.com/photos/50577/hedgehog-animal-baby-cute-50577.jpeg?cs=srgb&dl=pexels-pixabay-50577.jpg&fm=jpg",
+    },
+    {
+      id: "2",
+      name: "Michael",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmXhtdddYGmdbTHZ4YsmOp8lw2pS46M51sDw&s",
+    },
+    {
+      id: "3",
+      name: "Sophia",
+      image: "https://images.wsj.net/im-140539/?width=1280&size=1",
+    },
+    {
+      id: "4",
+      name: "David",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbVF3ccfihAW5yOWlkN0Q7SVEtwsUhJ88Gix2W3xzBTya5YPDfwqHI1K_OsPPsHG5wWY&usqp=CAU",
+    },
+    {
+      id: "5",
+      name: "Emma",
+      image:
+        "https://i.pinimg.com/236x/3e/7c/6f/3e7c6feab1a29f9f0cdeec00baef0a85.jpg",
+    },
   ];
 
-  const renderItem = ({ item }: { item: { id: string; name: string; image: string } }) => (
-    <View style={styles.card}>
+  const renderItem = ({
+    item,
+  }: {
+    item: { id: string; name: string; image: string };
+  }) => (
+    <View style={styles.card} testID={`Card-${item.id}`}>
       <Image source={{ uri: item.image }} style={styles.image} />
-      
       {/* Bottom Row (Like + Share) */}
       <View style={styles.bot}>
         <Text style={styles.name}>Like {item.id}</Text>
-        <TouchableOpacity style={styles.iconButton}>
+        <TouchableOpacity
+          style={styles.iconButton}
+          onPress={() => console.log(`Shared ${item.name}`)}
+          testID={`ShareButton-${item.id}`}
+        >
           <FontAwesome name="share" size={20} color="#3e7dc0" />
         </TouchableOpacity>
       </View>
@@ -37,18 +68,17 @@ export function ListView() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} testID="ListViewScreen">
       <View style={styles.modalContainer}>
-       
-
-        {/* Horizontal RecyclerView */}
+        {/* Horizontal FlatList */}
         <FlatList
           data={data}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
-          
+          horizontal // 👈 now it's horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 10 }}
+          testID="HorizontalList"
         />
       </View>
     </SafeAreaView>
@@ -63,19 +93,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContainer: {
-    width: "90%",
+    width: "100%",
     backgroundColor: "#fff",
     borderRadius: 12,
     padding: 16,
   },
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 12,
-    textAlign: "center",
-  },
   card: {
-    width: 140,
+    width: 160,
     backgroundColor: "#fceeee",
     margin: 8,
     borderRadius: 12,
@@ -99,7 +123,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   bot: {
-    flexDirection: "row", // 👈 side by side
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",

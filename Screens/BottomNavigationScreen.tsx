@@ -8,7 +8,7 @@ export default function BottomNavigationScreen() {
 
   // Text that should change between the buttons
   const getMiddleText = () => {
-    if (activeTab === "home") return " Home Fragment";
+    if (activeTab === "home") return "Home Fragment";
     if (activeTab === "chat") return "Chat Fragment";
     if (activeTab === "settings") return "Settings Fragment";
   };
@@ -44,7 +44,7 @@ export default function BottomNavigationScreen() {
           <FontAwesome
             name="home"
             size={24}
-            //color={activeTab === "home" }
+            color={activeTab === "home" ? "yellow" : "#fff"}
           />
           <Text style={styles.label}>Home</Text>
         </TouchableOpacity>
@@ -56,7 +56,7 @@ export default function BottomNavigationScreen() {
           <FontAwesome
             name="inbox"
             size={24}
-          //  color={activeTab === "chat" ? "yellow" : "#fff"}
+            color={activeTab === "chat" ? "yellow" : "#fff"}
           />
           <Text style={styles.label}>Chat</Text>
         </TouchableOpacity>
@@ -68,7 +68,7 @@ export default function BottomNavigationScreen() {
           <FontAwesome
             name="cog"
             size={24}
-           // color={activeTab === "settings" ? "yellow" : "#fff"}
+            color={activeTab === "settings" ? "yellow" : "#fff"}
           />
           <Text style={styles.label}>Settings</Text>
         </TouchableOpacity>

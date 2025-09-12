@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+// BasicViewScreen.tsx
+import React, { useEffect, useState } from "react";
+import RNApxorSDK from "react-native-apxor-sdk";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../App"; // ✅ import your navigator type
+import { RootStackParamList } from "../App";
 
 type NavProp = NativeStackNavigationProp<RootStackParamList, "Basic Views">;
 
 export function BasicViewScreen() {
   const navigation = useNavigation<NavProp>();
   const [propValue, setPropValue] = useState("");
+
+  // Track screen + navigation
+  useEffect(() => {
+    RNApxorSDK.logNavigationEvent("BasicViewScreen");
+    RNApxorSDK.trackScreen("BasicViewScreenTrack");
+  }, []);
 
   const menuItems: Array<keyof RootStackParamList> = [
     "Change Screen",
@@ -26,11 +34,14 @@ export function BasicViewScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Basic Views Menu</Text>
+      <Text testID="txtBasicViewsTitle" style={styles.title}>
+        Basic Views Menu
+      </Text>
 
       {menuItems.map((screen) => (
         <TouchableOpacity
           key={screen}
+          testID={`btnNav_${screen.replace(/\s+/g, "_")}`}
           style={styles.button}
           onPress={() => navigation.navigate(screen)}
         >
@@ -38,7 +49,13 @@ export function BasicViewScreen() {
         </TouchableOpacity>
       ))}
 
-      
+      <TextInput
+        testID="inputBasicViewsProp"
+        style={styles.input}
+        placeholder="Enter property value"
+        value={propValue}
+        onChangeText={setPropValue}
+      />
     </SafeAreaView>
   );
 }
@@ -73,7 +90,7 @@ const styles = StyleSheet.create({
   input: {
     width: "80%",
     height: 40,
-    borderBottomWidth: 1, // 👈 single line input like in ActionScreen
+    borderBottomWidth: 1,
     borderColor: "#333",
     fontSize: 16,
     paddingHorizontal: 8,

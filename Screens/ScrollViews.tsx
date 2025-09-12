@@ -9,8 +9,14 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from "react-native";
+import RNApxorSDK from "react-native-apxor-sdk";
 
 export function ScrollViews() {
+
+   RNApxorSDK.trackScreen("ScrollViewScreen");
+    RNApxorSDK.logNavigationEvent("ScrollViewScreen");
+
+
   const items = [
     { id: "1", name: "Text-1" },
     { id: "2", name: "Text-2" },

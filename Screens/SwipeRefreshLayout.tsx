@@ -1,7 +1,12 @@
 import React from "react";
 import { SafeAreaView, View, Text, StyleSheet } from "react-native";
+import RNApxorSDK from "react-native-apxor-sdk";
+
 
 export function SwipeRefreshLayout() {
+   RNApxorSDK.trackScreen("SetFontActivityScreen");
+    RNApxorSDK.logNavigationEvent("SetFontActivityScreen");
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>

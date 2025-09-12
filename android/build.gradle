@@ -1,4 +1,14 @@
 buildscript {
+    allprojects {
+        repositories {
+            maven {
+                url "https://repo.apxor.com/artifactory/list/libs-release-android/"
+            }
+            maven {
+                  url "https://repo.apxor.com/artifactory/list/libs-qa-android/"
+            }
+        }
+    }
     ext {
         buildToolsVersion = "36.0.0"
         minSdkVersion = 24
@@ -6,13 +16,21 @@ buildscript {
         targetSdkVersion = 36
         ndkVersion = "27.1.12297006"
         kotlinVersion = "2.1.20"
+
+        RNApxorSDK_compileSdkVersion = 36
+        RNApxorSDK_buildToolsVersion = "36.0.0"
+        RNApxorSDK_minSdkVersion = 24
+        RNApxorSDK_targetSdkVersion = 36
+        RNApxorRTMPlugin_compileSdkVersion = 36
+        RNApxorRTMPlugin_buildToolsVersion = "36.0.0"
+        RNApxorRTMPlugin_minSdkVersion = 24
+        RNApxorRTMPlugin_targetSdkVersion = 36
+
     }
     repositories {
         google()
         mavenCentral()
-        // maven {
-        //         url "https://repo.apxor.com/artifactory/list/libs-release-android/"
-        //     }
+       
         
     }
     dependencies {

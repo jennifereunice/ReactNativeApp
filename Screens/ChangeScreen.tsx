@@ -13,54 +13,73 @@ export function ChangeScreen() {
         ? "Screen two"
         : "Screen three";
 
-    return (
-      <>
-        
-
-        <Text style={styles.contentText}>{screenText}</Text>
-
-       
-      </>
-    );
+    return <Text style={styles.contentText}>{screenText}</Text>;
   };
 
   return (
     <SafeAreaView style={styles.container}>
-
-         <View style={styles.body}>{renderContent()}</View>
-
-      {/* Header with 3 menu buttons */}
-      
-        
+      {/* Screen content */}
+      <View style={styles.body}>{renderContent()}</View>
 
       {/* Footer navigation */}
-            <View style={styles.footer}>
-       <TouchableOpacity
-          style={[styles.tabButton, activeTab === "Home" && styles.activeTab]}
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={styles.tabButton}
           onPress={() => setActiveTab("Home")}
         >
-          <FontAwesome name="home" size={24} color="#fff" />
-          <Text style={styles.label}>Home</Text>
+          <FontAwesome
+            name="home"
+            size={24}
+            color={activeTab === "Home" ? "yellow" : "#fff"}
+          />
+          <Text
+            style={[
+              styles.label,
+              { color: activeTab === "Home" ? "yellow" : "#fff" },
+            ]}
+          >
+            Home
+          </Text>
         </TouchableOpacity>
-      
-      <TouchableOpacity
-          style={[styles.tabButton, activeTab === "Chat" && styles.activeTab]}
+
+        <TouchableOpacity
+          style={styles.tabButton}
           onPress={() => setActiveTab("Chat")}
         >
-          <FontAwesome name="inbox" size={24} color="#fff" />
-          <Text style={styles.label}>Chat</Text>
+          <FontAwesome
+            name="inbox"
+            size={24}
+            color={activeTab === "Chat" ? "yellow" : "#fff"}
+          />
+          <Text
+            style={[
+              styles.label,
+              { color: activeTab === "Chat" ? "yellow" : "#fff" },
+            ]}
+          >
+            Chat
+          </Text>
         </TouchableOpacity>
-      
+
         <TouchableOpacity
-          style={[styles.tabButton, activeTab === "Settings" && styles.activeTab]}
+          style={styles.tabButton}
           onPress={() => setActiveTab("Settings")}
         >
-          <FontAwesome name="cog" size={24} color="#fff" />
-          <Text style={styles.label}>Settings</Text>
+          <FontAwesome
+            name="cog"
+            size={24}
+            color={activeTab === "Settings" ? "yellow" : "#fff"}
+          />
+          <Text
+            style={[
+              styles.label,
+              { color: activeTab === "Settings" ? "yellow" : "#fff" },
+            ]}
+          >
+            Settings
+          </Text>
         </TouchableOpacity>
       </View>
-
-      
     </SafeAreaView>
   );
 }
@@ -70,29 +89,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F0F8FF",
   },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    backgroundColor: "#3e7dc0",
-    paddingVertical: 12,
-  },
-  tabButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-  },
-  tabText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  activeTab: {
-    borderBottomWidth: 3,
-    borderBottomColor: "#fff",
-  },
   body: {
     flex: 1,
     justifyContent: "center", // vertical center
-    alignItems: "center",     // horizontal center
+    alignItems: "center", // horizontal center
     paddingHorizontal: 20,
   },
   contentText: {
@@ -101,33 +101,12 @@ const styles = StyleSheet.create({
     color: "#333",
     marginVertical: 20,
   },
-  button: {
-    backgroundColor: "#3e7dc0ff",
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginVertical: 6,
-    width: "80%",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  swipeNote: {
-    textAlign: "center",
-    padding: 10,
-    fontSize: 14,
-    color: "#555",
-  },
   footer: {
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: "#3e7dc0ff",
     paddingVertical: 10,
   },
-  iconButton: { alignItems: "center" },
-  label: { color: "#fff", fontSize: 12, marginTop: 4 },
-
+  tabButton: { alignItems: "center" },
+  label: { fontSize: 12, marginTop: 4 },
 });
