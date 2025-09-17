@@ -6,3 +6,32 @@ include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
 
 
+// include(":core")
+// project(":core").projectDir = new File("../core")
+
+// include ':qe'
+// project(':qe').projectDir = new File("../qe")
+
+// include ':rtm'
+// project(':rtm').projectDir = new File("../rtm")
+
+// include ':surveys'
+// project(':surveys').    projectDir = new File("../surveys")
+// ////
+// include ':wysiwyg'
+// project(':wysiwyg').projectDir = new File("../wysiwyg")
+
+include ":core"
+project(":core").projectDir = new File(rootProject.projectDir, "../../core")
+
+include(":qe")
+project(":qe").projectDir = new File(rootProject.projectDir, "../../qe")
+
+include(":rtm-x")
+project(":rtm-x").projectDir = new File(rootProject.projectDir, "../../rtm-x")
+
+include(":surveys")
+project(":surveys").projectDir = new File(rootProject.projectDir, "../../surveys")
+
+include(":wysiwyg")
+project(":wysiwyg").projectDir = new File(rootProject.projectDir, "../../wysiwyg")

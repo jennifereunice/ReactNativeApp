@@ -44,13 +44,32 @@ export function RecyclerView() {
       image:
         "https://i.pinimg.com/236x/3e/7c/6f/3e7c6feab1a29f9f0cdeec00baef0a85.jpg",
     },
+    {
+      id: "6",
+      name: "Emma",
+      image:
+        "https://cdn.pixabay.com/photo/2019/03/03/08/25/rabbit-4031334_640.png",
+    },
+     {
+      id: "7",
+      name: "Emma",
+      image:
+        "https://cdn.pixabay.com/photo/2014/06/21/08/43/rabbit-373691_640.jpg",
+    },
+     {
+      id: "8",
+      name: "Emma",
+      image:"https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg",
+    },
+     {
+      id: "9",
+      name: "Emma",
+      image:
+        "https://i.pinimg.com/236x/3e/7c/6f/3e7c6feab1a29f9f0cdeec00baef0a85.jpg",
+    },
   ];
 
-  useEffect(() => {
-    // Track screen view
-    RNApxorSDK.trackScreen("RecyclerViewScreen");
-    RNApxorSDK.logNavigationEvent("RecyclerViewScreen");
-  }, []);
+  
 
   const renderItem = ({
     item,

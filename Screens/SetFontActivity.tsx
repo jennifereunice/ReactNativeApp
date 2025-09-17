@@ -13,11 +13,7 @@ export function SetFontActivity() {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
 
-  useEffect(() => {
-    // Track screen view
-    RNApxorSDK.trackScreen("SetFontActivityScreen");
-    RNApxorSDK.logNavigationEvent("SetFontActivityScreen");
-  }, []);
+ 
 
   const handleButtonPress = (type: string) => {
     RNApxorSDK.logAppEvent(`${type}-Pressed`, {

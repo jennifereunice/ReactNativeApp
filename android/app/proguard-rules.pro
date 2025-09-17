@@ -12,3 +12,8 @@
 -keep class com.apxor.** { *; }
 -dontwarn com.apxor.**
 
+# Ignore duplicate classes
+-dontwarn a.a
+-dontwarn com.example.shared.**
+
+

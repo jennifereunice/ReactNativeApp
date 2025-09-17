@@ -13,9 +13,7 @@ import RNApxorSDK from "react-native-apxor-sdk";
 
 export function ScrollViews() {
 
-   RNApxorSDK.trackScreen("ScrollViewScreen");
-    RNApxorSDK.logNavigationEvent("ScrollViewScreen");
-
+   
 
   const items = [
     { id: "1", name: "Text-1" },
@@ -24,18 +22,18 @@ export function ScrollViews() {
     { id: "4", name: "Text-4" },
     { id: "5", name: "Text-5" },
     { id: "6", name: "Text-6" },
-    { id: "6", name: "Text-7" },
-    { id: "6", name: "Text-8" },
-    { id: "6", name: "Text-9" },
-    { id: "6", name: "Text-10" },
-    { id: "6", name: "Text-11" },
-    { id: "6", name: "Text-12" },
-    { id: "6", name: "Text-13" },
-    { id: "6", name: "Text-14" },
-    { id: "6", name: "Text-15" },
-    { id: "6", name: "Text-16" },
-    { id: "6", name: "Text-17" },
-    { id: "6", name: "Text-18" },
+    { id: "7", name: "Text-7" },
+    { id: "8", name: "Text-8" },
+    { id: "9", name: "Text-9" },
+    { id: "10", name: "Text-10" },
+    { id: "11", name: "Text-11" },
+    { id: "12", name: "Text-12" },
+    { id: "13", name: "Text-13" },
+    { id: "14", name: "Text-14" },
+    { id: "15", name: "Text-15" },
+    { id: "16", name: "Text-16" },
+    { id: "17", name: "Text-17" },
+    { id: "18", name: "Text-18" },
   ];
 
   const [scrollX, setScrollX] = useState(0);
