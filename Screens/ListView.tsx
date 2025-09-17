@@ -44,6 +44,29 @@ export function ListView() {
       image:
         "https://i.pinimg.com/236x/3e/7c/6f/3e7c6feab1a29f9f0cdeec00baef0a85.jpg",
     },
+     {
+      id: "6",
+      name: "Emma",
+      image:
+        "https://cdn.pixabay.com/photo/2019/03/03/08/25/rabbit-4031334_640.png",
+    },
+     {
+      id: "7",
+      name: "Emma",
+      image:
+        "https://cdn.pixabay.com/photo/2014/06/21/08/43/rabbit-373691_640.jpg",
+    },
+     {
+      id: "8",
+      name: "Emma",
+      image:"https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg",
+    },
+     {
+      id: "9",
+      name: "Emma",
+      image:
+        "https://i.pinimg.com/236x/3e/7c/6f/3e7c6feab1a29f9f0cdeec00baef0a85.jpg",
+    },
   ];
 
   const renderItem = ({
@@ -75,7 +98,7 @@ export function ListView() {
           data={data}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
-          horizontal // 👈 now it's horizontal
+         // horizontal 
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 10 }}
           testID="HorizontalList"
@@ -86,30 +109,34 @@ export function ListView() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F0F8FF",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalContainer: {
-    width: "100%",
-    backgroundColor: "#fff",
-    borderRadius: 12,
-    padding: 16,
-  },
-  card: {
-    width: 160,
-    backgroundColor: "#fceeee",
-    margin: 8,
-    borderRadius: 12,
-    alignItems: "center",
-    padding: 12,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 3,
-  },
+  
+   container: {
+  flex: 1,
+  backgroundColor: "#F0F8FF",
+  paddingVertical: 16, // space from top/bottom
+},
+
+modalContainer: {
+  width: "100%",
+  backgroundColor: "#fff",
+  borderRadius: 12,
+  padding: 16,
+  alignItems: "center", // centers children horizontally
+},
+
+card: {
+  width: 160,
+  backgroundColor: "#fceeee",
+  marginVertical: 8,
+  borderRadius: 12,
+  alignItems: "center",
+  padding: 12,
+  shadowColor: "#000",
+  shadowOpacity: 0.1,
+  shadowRadius: 6,
+  elevation: 3,
+},
+
   image: {
     width: 100,
     height: 100,

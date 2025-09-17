@@ -46,11 +46,7 @@ export function PopUpScreen() {
     },
   ];
 
-  useEffect(() => {
-    // Track screen and navigation events
-    RNApxorSDK.trackScreen("PopUpScreen");
-    RNApxorSDK.logNavigationEvent("PopUpScreen");
-  }, []);
+  
 
   const renderItem = ({
     item,

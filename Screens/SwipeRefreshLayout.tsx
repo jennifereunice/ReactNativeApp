@@ -1,12 +1,13 @@
 import React from "react";
+// typings/react-native-apxor-sdk.d.ts
+//declare module 'react-native-apxor-sdk';
+
 import { SafeAreaView, View, Text, StyleSheet } from "react-native";
 import RNApxorSDK from "react-native-apxor-sdk";
 
 
 export function SwipeRefreshLayout() {
-   RNApxorSDK.trackScreen("SetFontActivityScreen");
-    RNApxorSDK.logNavigationEvent("SetFontActivityScreen");
-
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>

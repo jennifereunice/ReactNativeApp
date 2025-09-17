@@ -14,11 +14,7 @@ export function PossibleSizes() {
 
   const words = ["A", "AA", "AAA", "AAAA", "AAAAA", "AAAAAA", "AAAAAAA", "AAAAAAAA", "AAAAAAAAA", "AAAAAAAAAA"];
 
-  useEffect(() => {
-    // Track this screen on mount
-    RNApxorSDK.trackScreen("PossibleSizesScreen");
-    RNApxorSDK.logNavigationEvent("PossibleSizesScreen");
-  }, []);
+ 
 
   const handleTextLayout = (index: number, e: LayoutChangeEvent) => {
     const { width } = e.nativeEvent.layout;
@@ -35,10 +31,10 @@ export function PossibleSizes() {
           return (
             <TouchableOpacity
               key={index}
-              testID={`button-${index}`} // ✅ testID for automation
+              testID={`button-${index}`}
               style={[
                 styles.button,
-                { width: Math.max(measuredWidth + 20, 60) }, // padding + min width
+                { width: Math.max(3*measuredWidth + 40, 60) }, // padding + min width
               ]}
               onPress={() => {
                 // log click as an event

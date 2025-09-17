@@ -14,10 +14,7 @@ export function BasicViewScreen() {
   const [propValue, setPropValue] = useState("");
 
   // Track screen + navigation
-  useEffect(() => {
-    RNApxorSDK.logNavigationEvent("BasicViewScreen");
-    RNApxorSDK.trackScreen("BasicViewScreenTrack");
-  }, []);
+
 
   const menuItems: Array<keyof RootStackParamList> = [
     "Change Screen",
@@ -25,7 +22,7 @@ export function BasicViewScreen() {
     "Fragments",
     "Recycler View",
     "Visibility Views",
-    "Possible Shapes",
+  
     "Possible Sizes",
     "Scroll Views",
     "Horizontal Scroll Views",
@@ -49,13 +46,7 @@ export function BasicViewScreen() {
         </TouchableOpacity>
       ))}
 
-      <TextInput
-        testID="inputBasicViewsProp"
-        style={styles.input}
-        placeholder="Enter property value"
-        value={propValue}
-        onChangeText={setPropValue}
-      />
+     
     </SafeAreaView>
   );
 }

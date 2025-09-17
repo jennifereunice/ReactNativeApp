@@ -6,10 +6,7 @@ import RNApxorSDK from "react-native-apxor-sdk";   // ✅ import SDK
 export function SetAttributes() {
 
 
-   RNApxorSDK.trackScreen("SetAttributeScreen");
-    RNApxorSDK.logNavigationEvent("SetAttributeScreen");
-
-  // Default values
+ // Default values
   const [mainOption, setMainOption] = useState("user");  // default → User Attributes
   const [keyName, setKeyName] = useState("");
   const [valueType, setValueType] = useState("string");  // default → String

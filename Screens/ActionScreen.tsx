@@ -5,10 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
 export function ActionScreen() {
-  useEffect(() => {
-    RNApxorSDK.logNavigationEvent("ActionScreen");
-    RNApxorSDK.trackScreen("ActionScreenTrack");
-  }, []);
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -88,13 +85,7 @@ export function ActionScreen() {
         <Text style={styles.buttonText}>Tag 2</Text>
       </TouchableOpacity>
 
-      <TextInput
-        testID="inputActivity1"
-        style={styles.input}
-        placeholder="Enter prop for Activity 1"
-        multiline={false}
-        numberOfLines={1}
-      />
+    
     </SafeAreaView>
   );
 }

@@ -1,12 +1,12 @@
 buildscript {
     allprojects {
         repositories {
-            maven {
-                url "https://repo.apxor.com/artifactory/list/libs-release-android/"
-            }
-            maven {
-                  url "https://repo.apxor.com/artifactory/list/libs-qa-android/"
-            }
+            // maven {
+            //     url "https://repo.apxor.com/artifactory/list/libs-release-android/"
+            // }
+            // maven {
+            //       url "https://repo.apxor.com/artifactory/list/libs-qa-android/"
+            // }
         }
     }
     ext {
@@ -26,6 +26,7 @@ buildscript {
         RNApxorRTMPlugin_minSdkVersion = 24
         RNApxorRTMPlugin_targetSdkVersion = 36
 
+      
     }
     repositories {
         google()
@@ -37,6 +38,9 @@ buildscript {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+
+
+      
     }
 }
 
